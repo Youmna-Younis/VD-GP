@@ -28,7 +28,43 @@ import glob
 import tqdm
 import sys
 import logging
+##########Alert sys #################################
+import requests
+from datetime import datetime
+import pytz
 
+
+def Alert(videopath):
+    # get timezone for Egypt
+    UTC = pytz.timezone('Africa/Cairo')
+    # get current time
+    EG = datetime.now(UTC)
+
+    current_date = EG.strftime("%d-%m-%y")
+    current_time = EG.strftime("%H-%M-%S")
+
+    # Remove file before push on github####
+    filename = r"D:\books\GP\violence\photo\Alert system\token.txt"
+    with open(filename, 'r') as file:
+        telegram_auth_token = file.readline().strip()
+        telegram_group_id = file.readline().strip()
+    msg = f"Emergency: Violence detected\nLOCATION: Cairo, Egypt\nDATE: {current_date}\nTIME {current_time}\n Please respond immediately"
+    # video
+    videofile = {'video': open(videopath, 'rb')}
+
+    def SendtelegramMsg(message):
+        telegramAPIURL = f"https://api.telegram.org/bot{telegram_auth_token}/sendMessage?chat_id=@{telegram_group_id}&text={message}"
+        telegramRespose = requests.get(telegramAPIURL)
+        resp = requests.post(
+            f"https://api.telegram.org/bot{telegram_auth_token}/sendVideo?chat_id=@{telegram_group_id}",
+            files=videofile)
+        if telegramRespose == 200:
+            print("Message has sent successfully !")
+        else:
+            print("ERROR !")
+
+    SendtelegramMsg(msg)
+##########Alert sys##################################3
 app = Flask(__name__, static_folder='static')
 GAMMA = 0.67
 gamma_table = np.array([((i / 255.0) ** GAMMA) * 255 for i in np.arange(0, 256)]).astype("uint8")
@@ -351,7 +387,12 @@ def predict():
     mime_type = 'video/mp4'  # Use MP4 MIME type
     src = f'data:{mime_type};base64,' + b64encode(video).decode()
     video_tag = f'<video width="800" height="600" controls><source src="{src}" type="{mime_type}"></video>'
+   ################3
+    isviolence=probability_violence-probability_non_violence
 
+    if(isviolence>=0):
+        Alert(video_path)
+######################33
     return render_template('index.html', prob_violence=probability_violence, prob_non_violence=probability_non_violence,
                            video_tag=video_tag, selected_model=selected_model)
 
@@ -377,7 +418,9 @@ def start_stream():
 
     #. While loop : Until the end of input video, it read frame, extract features, predict violence True or False.
     # ----- Reshape & Save frame img as (30, 160, 160, 3) Numpy array  -----
-    while True: 
+    AlertIsSend = 0
+    while True:
+
         frame_counter+=1
         grabbed, frm=vid.read()  # read each frame img. grabbed=True, frm=frm img. ex: (240, 320, 3)
         
@@ -461,7 +504,11 @@ def start_stream():
                 draw=ImageDraw.Draw(img_pil)
                 draw.text((int(0.025*W), int(0.025*H)), text2_1, font=font1, fill=(0,0,255,0))
                 draw.text((int(0.025*W), int(0.095*H)), text2_2, font=font2, fill=(0,0,255,0))
-                output=np.array(img_pil) 
+                output=np.array(img_pil)
+                if not AlertIsSend:
+                             Alert(output)
+                             AlertIsSend=True
+
             
         # Save captioned video file by using 'writer'
         if writer is None:

@@ -1,0 +1,64 @@
+                    <div class="container">
+                        <div class="services-content">
+                            <div class="title-box text-center">
+                                <div class="content-wrapper">
+                                    <h3 class="title-box-name">Our services</h3>
+                                    <div class="title-separator mx-auto"></div>
+                                    <p class="text title-box-text">Peacekeeper offers a comprehensive solution for real-time violence detection in public spaces. We leverage cutting-edge computer vision techniques to automatically identify violent behaviors within video footage, keeping your community safe and secure.</p>
+                                </div>
+                            </div>
+
+                            <div class="services-list">
+
+
+
+
+
+
+
+
+
+                                <div class="services-item " style="width: 600px; height: 400px;">
+                                    <div class="item-icon">
+                                        <img src="static/images/upload.png" alt="service icon" style="width: 70%; height: 70%;">
+                                    </div>
+
+<div class="d-flex align-items-center justify-content-center services-main-btn">
+
+                                                                   <div>
+
+        <form class="p-3 text-center mt-4" action="/" method="post" enctype="multipart/form-data">
+
+
+                                                              <div><button id="chooseFileBtn" type="button" class="btn btn-primary mt-3">Choose Video</button>
+<input id="fileInput" class="form-control" type="file" name="video_file" accept="video/avi" style="display: none;">
+</div>
+
+            <button name="video_file" class="btn btn-primary mt-3" type="submit">Submit</button>
+
+                   <!--fianl part-->
+               </form>
+             </div>
+                    <!--fianl part-->
+
+</div>
+
+                                </div>
+
+                                <div class="services-item ">
+                                    <div class="item-icon">
+                                        <img src="static/images/Choose.png" alt="service icon">
+                                         <h5 class="item-title fw-7">Options</h5>
+                                    <p class="text">Select from various options for utilizing our violence detection services. You may either upload a video online or utilize real-time camera tracking.</p>
+                                    </div>
+
+                                </div>
+
+
+
+
+                            </div>
+
+
+                        </div>
+                    </div>
