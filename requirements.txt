@@ -9,7 +9,7 @@ opencv_python==4.9.0.80
 Pillow==10.3.0
 pytz==2023.3
 Requests==2.32.3
-skimage==0.0
+scikit-image==0.22.0
 tensorflow==2.15.0
 tensorflow_intel==2.15.0
 tqdm==4.65.0
