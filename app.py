@@ -44,7 +44,7 @@ def Alert(videopath):
     current_time = EG.strftime("%H-%M-%S")
 
     # Remove file before push on github####
-    filename = r"D:\books\GP\violence\photo\Alert system\token.txt"
+    filename = r"/token.txt"
     with open(filename, 'r') as file:
         telegram_auth_token = file.readline().strip()
         telegram_group_id = file.readline().strip()
@@ -70,8 +70,8 @@ GAMMA = 0.67
 gamma_table = np.array([((i / 255.0) ** GAMMA) * 255 for i in np.arange(0, 256)]).astype("uint8")
 logging.getLogger('ultralytics').setLevel(logging.ERROR)
 
-model_path_old = 'D:/books/GP/violence/photo/peacekeeper/210512_MobileNet_checkpoint_epoch100.h5'
-model_path_new = 'D:/books/GP/violence/photo/peacekeeper/210512_MobileNet_checkpoint_epoch100.h5' #'D:/books/GP/violence/photo/peacekeeper/CNN-LSTM.h5'
+model_path_old = '210512_MobileNet_checkpoint_epoch100.h5'
+model_path_new = '210512_MobileNet_checkpoint_epoch100.h5' #'D:/books/GP/violence/photo/peacekeeper/CNN-LSTM.h5'
 selected_model = model_path_old  # Default selected model
 
 # Load models
@@ -213,7 +213,7 @@ logging.getLogger('ultralytics').setLevel(logging.ERROR)
 
 def yolov8n(video_path, output_video_path):
     # Load YOLO model
-    model =YOLO('D:/books/GP/violence/photo/peacekeeper/yolov8n.pt')
+    model =YOLO('/yolov8n.pt')
 
     # Open input video file
     cap = cv2.VideoCapture(video_path)
@@ -318,7 +318,7 @@ def load_model_weigths():
     modell.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
 
     #modell.load_weights('/kaggle/input/violenceweights/model_weights.h5')
-    modell.load_weights('D:/books/GP/violence/photo/peacekeeper/model_weights.h5')
+    modell.load_weights('/model_weights.h5')
 
     return modell
 
@@ -371,7 +371,7 @@ def predict():
 
 
     else:
-       p= Yolo2predictions(video_path,r'D:/books/GP/violence/photo/peacekeeper/videos/temp.avi')
+       p= Yolo2predictions(video_path,r'/temp.avi')
        probability_violence=p[0]
        probability_non_violence=1-p[0]
    
