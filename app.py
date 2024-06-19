@@ -213,7 +213,7 @@ logging.getLogger('ultralytics').setLevel(logging.ERROR)
 
 def yolov8n(video_path, output_video_path):
     # Load YOLO model
-    model =YOLO('/yolov8n.pt')
+    model =YOLO('yolov8n.pt')
 
     # Open input video file
     cap = cv2.VideoCapture(video_path)
@@ -318,7 +318,7 @@ def load_model_weigths():
     modell.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
 
     #modell.load_weights('/kaggle/input/violenceweights/model_weights.h5')
-    modell.load_weights('/model_weights.h5')
+    modell.load_weights('model_weights.h5')
 
     return modell
 
