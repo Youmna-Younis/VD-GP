@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Peacekeeper</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- font awesome -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <!-- owl carousel -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css" integrity="sha512-sMXtMNL1zRzolHYKEujM2AqCLUR9F2C4/05cdbxjjLSRvMQIciEPCQZo++nk7go3BtSuK9kfa/s+a4f4i5pLkw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <!-- custom css -->
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/utilities.css') }}">
+
+
+        <!-- normalize.css -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    </head>
+    <body>
+        
+        <div class="page-wrapper">
+            <!-- header -->
+            <header class = "header">
+                <nav class = "navbar">
+                    <div class="container">
+                        <div class="navbar-content d-flex justify-content-between align-items-center">
+                            <div class = "brand-and-toggler d-flex align-items-center justify-content-between">
+                                <a href = "#" class = "navbar-brand d-flex align-items-center">
+                                    <span class="brand-shape d-inline-block text-white">PK</span>
+                                    <span class="brand-text fw-7">peacekeeper</span>
+                                </a>
+                                <button type = "button" class = "d-none navbar-show-btn">
+                                    <i class = "fas fa-bars"></i>
+                                </button>
+                            </div>
+
+                            <div class = "navbar-box">
+                                <button type = "button" class = "navbar-hide-btn">
+                                    <i class = "fas fa-times"></i>
+                                </button>
+
+                                <ul class = "navbar-nav d-flex align-items-center">
+                                    <li class = "nav-item">
+                                        <a href = "#Home" class = "nav-link text-white nav-active text-nowrap">Home</a>
+                                    </li>
+                                    <li class = "nav-item">
+                                        <a href = "#Our services" class = "nav-link text-white text-nowrap">Services</a>
+                                    </li>
+                                    <li class = "nav-item">
+                                        <a href = "#video" class = "nav-link text-white text-nowrap">Solutions</a>
+                                    </li>
+                                    <li class = "nav-item">
+                                        <a href = "#Motivation" class = "nav-link text-white text-nowrap">Motivation</a>
+                                    </li>
+                                    <li class = "nav-item">
+                                        <a href = "#" class = "nav-link text-white text-nowrap">About us</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+
+                <div class="element-one" id="Home">
+                    <img src = "static/images/element-img-1.png" alt = "">
+                </div>
+
+                <div class="banner">
+                    <div class="container">
+                        <div class="banner-content">
+                            <div class="banner-left">
+                                <div class="content-wrapper">
+                                    <h1 class="banner-title">Empowering Safety<br> for you</h1>
+                                    <p class="text text-white">Welcome to Peacekeeper, where cutting-edge technology meets peace of mind. Our advanced violence detection solutions are designed to empower safety in every environment. Explore our innovative platform and discover how we're revolutionizing security measures worldwide.</p>
+                                    <a href = "#Our services" class="btn btn-secondary">Explore</a>
+                                </div>
+                            </div>
+
+                            <div class = "banner-right d-flex align-items-center justify-content-end">
+                                <img src = "static/images/bkg.png" alt = "">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+            <!-- end of header -->
+
+            <main>
+          <section class = "sc-services"> <section class = "Solutions" id="Our services">
+                    <div class = "services-shape">
+                        <img src = "static/images/curve-shape-1.png" alt = "">
+                    </div>
+                    <div class="container">
+                        <div class = "services-content">
+                            <div class="title-box text-center">
+                                <div class = "content-wrapper">
+                                    <h3 class = "title-box-name">Our services</h3>
+                                    <div class = "title-separator mx-auto"></div>
+                                    <p class = "text title-box-text">Peacekeeper offers a comprehensive solution for real-time violence detection in public spaces. We leverage cutting-edge computer vision techniques to automatically identify violent behaviors within video footage, keeping your community safe and secure.</p>
+                                </div>
+                            </div>
+
+                            <div class = "services-list">
+                                <div class = "services-item">
+                                    <div class = "item-icon">
+                                        <img src = "static/images/upload.png"  alt = "service icon" style="width: 70%; height: 70%;" >
+                                    </div>
+                                    <h5 class = "item-title fw-7">Upload Video</h5>
+                                    <p class = "text">Violence Detection.</p>
+<div class = "d-flex align-items-center justify-content-center services-main-btn">
+                                                                <a href = "#video" class = "btn btn-primary-outline">Explore</a>
+
+</div>
+                                </div>
+
+                                <div class = "services-item">
+                                    <div class = "item-icon">
+                                        <img src = "static/images/Choose.png" alt = "service icon" >
+                                         <h5 class = "item-title fw-7">Options</h5>
+                                    <p class = "text">Select from various options for utilizing our violence detection services. You may either upload a video online or utilize real-time camera tracking.</p>
+                                    </div>
+
+                                </div>
+
+                                <div class = "services-item">
+                                    <div class = "item-icon">
+                                        <img src = "static/images/eye.png" alt = "service icon" style="width: 70%; height: 70%;" >
+                                    </div>
+                                    <h5 class = "item-title fw-7">Tracking</h5>
+                                    <p class = "text">Real time detection.</p>
+ <div class = "d-flex align-items-center justify-content-center services-main-btn">
+                                                                <a href = "#camera" class = "btn btn-primary-outline">Explore</a>
+                            </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </section>>
+          </section>
+   <!--upload video page-->
+   <!--Explore upload video page-->
+                <div id="video" class="feedback-content">
+                            <div class="feedback-element">
+                                <img src="static/images/element-img-3.png">
+                            </div>
+
+                            <div class="title-box text-center">
+
+                                <div class="content-wrapper">
+                                    <h3 class="title-box-name text-white">Upload video for violence detection</h3>
+                                    <div class="title-separator mx-auto"></div>
+                                <!-- HTML -->
+
+<div><div class = "d-flex align-items-center justify-content-center services-main-btn">
+                           <a href = "#model" class="btn btn-white-outline">Explore</a>
+
+</div>
+
+ <div class="item-icon" style="width: 35%;height: 35%;margin: 0 auto;padding: 35px;">
+    <img src="static/images/undraw_video_files_fu10.png" alt="service icon">
+</div>
+</div>
+                                    <!-- HTML -->
+
+
+
+                                </div>
+
+                            </div>
+
+                        </div>
+                   <!--Explore upload video page-->
+                <!--model-->
+<section  id="model" class="sc-services">
+    <section class="Solutions"  >
+        <div class="services-shape">
+            <img src="static/images/curve-shape-1.png" alt="">
+        </div>
+
+        <form class="p-3 text-center mt-4" action="/" method="post" enctype="multipart/form-data">
+            <input type="radio" id="oldModel" name="modelSelection" value="oldModel" {% if selected_model == "oldModel" %} checked {% endif %}>
+            <label for="oldModel">CNN-LSTM Model</label>
+            <br>
+            <input type="radio" id="newModel" name="modelSelection" value="newModel" {% if selected_model == 'newModel' %} checked {% endif %}>
+            <label for="newModel">Yolo-Model</label>
+            <br>
+            <!--add 1 to id to disable-->
+            <div>
+                <button id="chooseFileBtn" type="button" class="btn btn-primary mt-3">Choose Video</button>
+                <input id="fileInput" class="form-control" type="file" name="video_file" accept="video/avi" style="display: none;">
+                <button class="btn btn-primary mt-3" type="submit">Submit</button>
+            </div>
+        </form>
+
+        {% if prob_violence is not none %}
+        <!-- Prediction result display -->
+        <div class="row justify-content-center mt-5">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Prediction Result</h5>
+                        <p class="card-text">Probability of Violence: <span style="color:red;">{{ prob_violence }}</span></p>
+                        <p class="card-text">Probability of Non-violence: <span style="color:green;">{{ prob_non_violence }}</span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+
+        <!-- Display uploaded video -->
+        {% if video_tag %}
+        <div class="video-container">
+            <video id="uploadedVideo" controls>
+                <!-- Placeholder video source -->
+                <source {{ video_tag | safe }} type="video/mp4">
+            </video>
+        </div>
+        {% endif %}
+    </section>
+</section>
+<!--model-->
+
+                   <!--upload video page-->
+
+
+<!----->
+   <!--upload video page Real-->
+          <section id="camera" class = "sc-feedback"><div class="feedback-content">
+                            <div class="feedback-element">
+                                <img src="static/images/element-img-3.png">
+                            </div>
+
+                      <div class="title-box text-center">
+
+                                <div class="content-wrapper">
+                                    <h3 class="title-box-name text-white">Real Time Detection</h3>
+                                    <div class="title-separator mx-auto"></div>
+                                <!-- HTML -->
+<!----
+ <form method="POST" action="/start_stream">
+<button type="button" class="btn btn-white-outline">Open Camera</button>
+     <form />
+     -->
+
+
+    <form action="/start_stream" method="POST">
+        <button type="submit" class="btn btn-white-outline">Open Camera</button>
+    </form>
+     <!-- HTML -->
+
+
+
+                                </div>
+                               <div class="item-icon" style="width: 35%;height: 35%;margin: 0 auto;padding: 15px;">
+    <img src="static/images/undraw_Camera_re_cnp4.png" alt="service icon">
+</div>
+
+                            </div>
+
+                        </div></section>
+                   <!--upload video page-->
+
+
+
+
+
+
+
+                <!--abou-->
+                <section id="Motivation" class="sc-grid sc-grid-one">
+                    <div class="container">
+                        <div class="grid-content d-grid align-items-center">
+                            <div class="grid-img">
+                                <img src="static/images/undraw_conceptual_idea_xw7k.png" alt="">
+                            </div>
+                            <div class="grid-text">
+                                <div class="content-wrapper text-start">
+                                    <div class="title-box">
+                                        <h3 class="title-box-name text-white">Our Motivation</h3>
+                                        <div class="title-separator mx-auto"></div>
+                                    </div>
+
+                                    <p class="text title-box-text text-white">
+This project is motivated by the pressing need to enhance safety in public spaces and communities. Violence is a significant safety concern, making the use of advanced technology a necessity. Our goal is to develop an intelligent system that swiftly detects violence in surveillance camera footage, ensuring the safety of people in various settings. This project aligns with the growing importance of AI and deep learning in security, pushing the boundaries of technology's real-world applications.
+</p>
+                                    <button type="button" class="btn btn-white-outline">Learn more</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!--abou-->
+
+
+
+
+
+
+
+            </main>
+
+          <!--final-->
+                <footer class="footer">
+                <div class="container">
+                    <div class="footer-content">
+                        <div class="footer-list d-grid text-white">
+                            <div class="footer-item">
+                                <a href="#" class="navbar-brand d-flex align-items-center">
+                                    <span class="brand-shape d-inline-block text-white">PK</span>
+                                    <span class="brand-text fw-7">Peacekeeper</span>
+                                </a>
+                                <p class="text-white">Peacekeeper: Keeping Communities Safe with AI-Powered Violence Detection
+
+</p>
+                                <p class="text-white copyright-text">© Peacekeeper 2024. All rights reserved.</p>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="footer-element-1">
+                    <img src="assets/images/element-img-4.png" alt="">
+                </div>
+                <div class="footer-element-2">
+                    <img src="assets/images/element-img-5.png" alt="">
+                </div>
+            </footer>
+                <!--final-->
+        </div>
+
+
+
+
+
+
+                <!--upload video page-->
+
+
+                <!--upload video page-->
+
+
+        <!-- jquery cdn -->
+        <script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
+        <!-- owl carousel -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <!-- custom js -->
+        <script src = "static/js/script.js"></script>
+    <script src = "static/js/code.js"></script>
+
+
+
+
+    </body>
+</html>
