@@ -85,8 +85,9 @@ GAMMA = 0.67
 gamma_table = np.array([((i / 255.0) ** GAMMA) * 255 for i in np.arange(0, 256)]).astype("uint8")
 logging.getLogger('ultralytics').setLevel(logging.ERROR)
 
-model_path_old = r'.\210512_MobileNet_checkpoint_epoch100.h5'
-model_path_new = r'.\210512_MobileNet_checkpoint_epoch100.h5' #'D:/books/GP/violence/photo/peacekeeper/CNN-LSTM.h5'
+#model_path_old = r'.\210512_MobileNet_checkpoint_epoch100.h5'
+model_path_old = r'.\CNN-LSTM.h5'
+model_path_new = r'.\CNN-LSTM.h5' #'D:/books/GP/violence/photo/peacekeeper/CNN-LSTM.h5'
 selected_model = model_path_old  # Default selected model
 
 # Load models
