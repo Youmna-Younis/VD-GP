@@ -32,7 +32,16 @@ import logging
 import requests
 from datetime import datetime
 import pytz
+################Update###############33
+from flask_wtf import FlaskForm
+from wtforms import FileField, SubmitField 
+from dotenv import load_dotenv
+from flask_cors import CORS
 
+app = Flask(__name__, static_folder='static')
+load_dotenv()
+CORS(app)
+#############################
 
 def Alert(videopath):
     # get timezone for Egypt
@@ -44,7 +53,7 @@ def Alert(videopath):
     current_time = EG.strftime("%H-%M-%S")
 
     # Remove file before push on github####
-    filename = r"/token.txt"
+    filename = "token.txt" 
     with open(filename, 'r') as file:
         telegram_auth_token = file.readline().strip()
         telegram_group_id = file.readline().strip()
@@ -65,13 +74,20 @@ def Alert(videopath):
 
     SendtelegramMsg(msg)
 ##########Alert sys##################################3
-app = Flask(__name__, static_folder='static')
+#################################NEWUPLOAD#########
+app.config['SECRET_KEY']='SUGGESTSTRONGPSWD25'
+
+class UploadFileForm(FlaskForm):
+    file=FileField("File")
+    submit=SubmitField("Upload File")
+#####################NEW##################3
 GAMMA = 0.67
 gamma_table = np.array([((i / 255.0) ** GAMMA) * 255 for i in np.arange(0, 256)]).astype("uint8")
 logging.getLogger('ultralytics').setLevel(logging.ERROR)
 
-model_path_old = '210512_MobileNet_checkpoint_epoch100.h5'
-model_path_new = '210512_MobileNet_checkpoint_epoch100.h5' #'D:/books/GP/violence/photo/peacekeeper/CNN-LSTM.h5'
+#model_path_old = r'.\210512_MobileNet_checkpoint_epoch100.h5'
+model_path_old = r'.\CNN-LSTM.h5'
+model_path_new = r'.\CNN-LSTM.h5' #'D:/books/GP/violence/photo/peacekeeper/CNN-LSTM.h5'
 selected_model = model_path_old  # Default selected model
 
 # Load models
@@ -318,7 +334,7 @@ def load_model_weigths():
     modell.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
 
     #modell.load_weights('/kaggle/input/violenceweights/model_weights.h5')
-    modell.load_weights('model_weights.h5')
+    modell.load_weights('/model_weights.h5')
 
     return modell
 
@@ -336,15 +352,17 @@ def Yolo2predictions(video_path, output_video_path):
 @app.route('/', methods=['GET'])
 def hello_world():
     return render_template("index.html")
-
+################################NEWROUte#######3
+@app.route('/',methods=['GET','POST'])
+#################################NEW#########
 
 @app.route('/', methods=['POST'])
 def predict():
     global selected_model
-    
     video_file = request.files['video_file']
     video_path = "./videos/" + video_file.filename
 
+    
     if 'modelSelection' in request.form:
         selected_model = request.form['modelSelection']
     
