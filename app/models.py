@@ -97,4 +97,17 @@ def yolov8n(video_path, output_video_path):
             break
         gamma_corrected_frame = cv2.LUT(frame, gamma_table)
         results = model(gamma_corrected_frame)
-        black_frame = np
+        black_frame = np.zeros((frame.shape[0], frame.shape[1], 3), dtype=np.uint8)
+        for result in results:
+            boxes = result.boxes
+            for box in boxes:
+                conf = box.conf.cpu().numpy()[0]
+                if conf >= 0.25:
+                    x1, y1, x2, y2 = map(int, box.xyxy.cpu().numpy()[0])
+                    cv2.rectangle(black_frame, (x1, y1), (x2, y2), (0, 255, 0), 2)
+                    cv2.putText(black_frame, f"{conf:.2f}", (x1, y1 - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.9, (0, 255, 0), 2)
+        output_frame = cv2.addWeighted(frame, 0.5, black_frame, 0.5, 0)
+        out.write(output_frame)
+    cap.release()
+    out.release()
+    print(f"Output video saved as: {output_video_path}")
