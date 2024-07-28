@@ -48,7 +48,7 @@ Detailed instructions for navigating and utilizing the Peacekeeper platform can 
 
 ## UI Design
 The user interface of Peacekeeper is designed to be intuitive and user-friendly, facilitating easy interaction with the violence detection system. Below are some key elements of the UI:
-
+[Picture8.png]
 ## Contributions
 Contributions are welcome. If you have ideas for enhancements or feature additions, please submit a pull request.
 
