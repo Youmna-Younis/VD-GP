@@ -8,18 +8,13 @@ import time
 import subprocess
 import imageio
 from base64 import b64encode
-
 from skimage.io import imread
 from skimage.transform import resize
 from PIL import Image, ImageFont, ImageDraw  # add caption by using custom font
-
 from collections import deque
 from tensorflow import keras
-
-###farah model
 from keras.models import load_model
 import matplotlib.pyplot as plt
-
 from ultralytics import YOLO
 import cv2
 import numpy as np
@@ -28,10 +23,17 @@ import glob
 import tqdm
 import sys
 import logging
-##########Alert sys #################################
 import requests
 from datetime import datetime
 import pytz
+from flask_wtf import FlaskForm
+from wtforms import FileField, SubmitField 
+from dotenv import load_dotenv
+from flask_cors import CORS
+
+app = Flask(__name__, static_folder='static')
+load_dotenv()
+CORS(app)
 
 
 def Alert(videopath):
@@ -44,11 +46,11 @@ def Alert(videopath):
     current_time = EG.strftime("%H-%M-%S")
 
     # Remove file before push on github####
-    filename = r"/token.txt"
+    filename = "token.txt" 
     with open(filename, 'r') as file:
         telegram_auth_token = file.readline().strip()
         telegram_group_id = file.readline().strip()
-    msg = f"Emergency: Violence detected\nLOCATION: Cairo, Egypt\nDATE: {current_date}\nTIME {current_time}\n Please respond immediately"
+    msg = f"Emergency: Violence detected\nDATE: {current_date}\nTIME {current_time}\n Please respond immediately"
     # video
     videofile = {'video': open(videopath, 'rb')}
 
@@ -64,14 +66,19 @@ def Alert(videopath):
             print("ERROR !")
 
     SendtelegramMsg(msg)
-##########Alert sys##################################3
-app = Flask(__name__, static_folder='static')
+
+
+class UploadFileForm(FlaskForm):
+    file=FileField("File")
+    submit=SubmitField("Upload File")
+
 GAMMA = 0.67
 gamma_table = np.array([((i / 255.0) ** GAMMA) * 255 for i in np.arange(0, 256)]).astype("uint8")
 logging.getLogger('ultralytics').setLevel(logging.ERROR)
 
-model_path_old = '210512_MobileNet_checkpoint_epoch100.h5'
-model_path_new = '210512_MobileNet_checkpoint_epoch100.h5' #'D:/books/GP/violence/photo/peacekeeper/CNN-LSTM.h5'
+#model_path_old = r'.\210512_MobileNet_checkpoint_epoch100.h5'
+model_path_old = r'.\CNN-LSTM.h5'
+model_path_new = r'.\CNN-LSTM.h5' #'D:/books/GP/violence/photo/peacekeeper/CNN-LSTM.h5'
 selected_model = model_path_old  # Default selected model
 
 # Load models
@@ -146,12 +153,12 @@ def pred_fight(model, pred_imgarr, acuracy=0.9):
     pred_test = model.predict(pred_imgarr)  # Violence(Fight) : [0,1]. Non-Violence(NonFight) : [1,0]
 
     return pred_test[0][1], pred_test[0][0]  # Probability of Violence, Probability of Non-violence
-###farah-model####
+
 
 
 
 #####################################################################
-#Yolo model 2####
+#Yolo model ####
 def load_video(video_path):
     #     print(video_path)
     SLIDING_STEP = 51
@@ -196,15 +203,6 @@ def load_video(video_path):
     #     print(f'frames count {len(frames)}')
     return np.array([frames[i:i + INPUT_FRAMES] for i in range(0, len(frames) - INPUT_FRAMES + 1, SLIDING_STEP)])
 
-
-from ultralytics import YOLO
-import cv2
-import numpy as np
-import os
-import glob
-import tqdm
-import sys
-import logging
 
 GAMMA = 0.67
 gamma_table = np.array([((i / 255.0) ** GAMMA) * 255 for i in np.arange(0, 256)]).astype("uint8")
@@ -318,7 +316,7 @@ def load_model_weigths():
     modell.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
 
     #modell.load_weights('/kaggle/input/violenceweights/model_weights.h5')
-    modell.load_weights('model_weights.h5')
+    modell.load_weights('/model_weights.h5')
 
     return modell
 
@@ -336,15 +334,17 @@ def Yolo2predictions(video_path, output_video_path):
 @app.route('/', methods=['GET'])
 def hello_world():
     return render_template("index.html")
-
+################################NEWROUte#######3
+@app.route('/',methods=['GET','POST'])
+#################################NEW#########
 
 @app.route('/', methods=['POST'])
 def predict():
     global selected_model
-    
     video_file = request.files['video_file']
     video_path = "./videos/" + video_file.filename
 
+    
     if 'modelSelection' in request.form:
         selected_model = request.form['modelSelection']
     
@@ -387,12 +387,12 @@ def predict():
     mime_type = 'video/mp4'  # Use MP4 MIME type
     src = f'data:{mime_type};base64,' + b64encode(video).decode()
     video_tag = f'<video width="800" height="600" controls><source src="{src}" type="{mime_type}"></video>'
-   ################3
+   ################
     isviolence=probability_violence-probability_non_violence
 
     if(isviolence>=0):
         Alert(video_path)
-######################33
+######################
     return render_template('index.html', prob_violence=probability_violence, prob_non_violence=probability_non_violence,
                            video_tag=video_tag, selected_model=selected_model)
 
