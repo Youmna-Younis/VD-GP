@@ -1,5 +1,5 @@
 # Peacekeeper Violence Detection System
-
+![intro](User_Manual/Picture1.png)
 ## Overview
 Peacekeeper is an advanced violence detection system designed to enhance safety and security in public spaces. Utilizing cutting-edge computer vision and deep learning techniques, Peacekeeper provides real-time monitoring and detection of violent incidents in surveillance video feeds. The system can be integrated with existing security infrastructures and offers customizable alert settings to ensure timely responses to potential threats.
 
@@ -48,7 +48,8 @@ Detailed instructions for navigating and utilizing the Peacekeeper platform can 
 
 ## UI Design
 The user interface of Peacekeeper is designed to be intuitive and user-friendly, facilitating easy interaction with the violence detection system. Below are some key elements of the UI:
-[Picture8.png]
+
+![UI Design](Picture8.png)
 ## Contributions
 Contributions are welcome. If you have ideas for enhancements or feature additions, please submit a pull request.
 
