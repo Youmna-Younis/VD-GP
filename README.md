@@ -59,6 +59,4 @@ This project is licensed under the [MIT License](https://opensource.org/licenses
 ## Acknowledgments
 We extend our gratitude to the team members, supervisors, and contributors who have been instrumental in the development of this violence detection system.
 
----
 
-Replace `path/to/...` with the actual paths to your images. This section showcases the UI design elements and helps users understand the interface and functionality visually.
